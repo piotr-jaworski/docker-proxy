@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  nginx-proxy:
+    image: nginxproxy/nginx-proxy
+    restart: unless-stopped
+    tty: true
+    networks:
+      - app-network
+    ports:
+      - "80:80"
+    volumes:
+      - ./docker/certs:/etc/nginx/certs
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+
+  mysql:
+    image: mariadb:10.5
+    restart: unless-stopped
+    tty: true
+    networks:
+      - app-network
+    ports:
+      - "33062:3306"
+    volumes:
+      - ./docker/mysql/init:/docker-entrypoint-initdb.d
+      - ./db:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=admin
+      - MYSQL_DATABASE=master
+      - MYSQL_USER=app_usr
+      - MYSQL_PASSWORD=app_pass
+

@@ -1,0 +1,9 @@
+/db
+/docker/compose/*
+!/docker/compose/01_start.yml
+!/docker/compose/02_example.yml.bck
+!/docker/compose/99_end.yml
+/docker/mysql/*/*
+!/docker/mysql/init/00_example.sql.bck
+!.gitkeep
+/docker-compose.yml

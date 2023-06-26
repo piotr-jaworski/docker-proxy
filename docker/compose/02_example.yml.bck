@@ -1,0 +1,32 @@
+
+# indentation need to start with 2 spaces (`  `)
+# Important! Remember to change all `example` occurrences to new name You have chosen
+  example:
+    build: docker/prestashop/1.7-7.2-apache
+    restart: unless-stopped
+    tty: true
+    depends_on:
+      - mysql
+    networks:
+      - app-network
+    hostname: example.local
+    environment:
+      HTTPS_METHOD: noredirect
+      VIRTUAL_HOST: example.local
+      PS_INSTALL_AUTO: 1
+      PS_DOMAIN: example.local
+      DB_SERVER: mysql
+      DB_NAME: example
+      DB_USER: root
+      DB_PASSWD: admin
+      PS_FOLDER_ADMIN: _admin1
+      PS_FOLDER_INSTALL: _install
+      ADMIN_MAIL: admin@example.com
+      ADMIN_PASSWD: admin@example.com
+      INIT_DB_FILE: 00_example.sql
+    expose:
+      - "80"
+    volumes:
+      - ./docker/mysql:/docker-mysql/:delegated
+      - ./../example/:/var/www/html/:delegated # Important! Remember to change `./../example/` to existing directory with Your project
+    # Important! remember to keep at least one new empty line at the end

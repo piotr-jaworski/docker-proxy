@@ -1,0 +1,2 @@
+CREATE DATABASE IF NOT EXISTS `example`;
+GRANT ALL ON `example`.* TO 'app_usr'@'%';
