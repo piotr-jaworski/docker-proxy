@@ -7,3 +7,4 @@
 !/docker/mysql/init/00_example.sql.bck
 !.gitkeep
 /docker-compose.yml
+/docker/initScript/permissionResetForLinux.sh

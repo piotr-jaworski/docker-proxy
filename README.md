@@ -45,6 +45,17 @@ and executing them like this:
 mysql -u root -p -h mysql < /docker-mysql/init/02_example.sql
 ```
 
+### UPDATE
+added shell script to run `./docker/mysql/init/$INIT_DB_FILE` configurable in container variables
+
+## File permissions (Linux)
 if You have any problems with user permission to files (common problem on Linux) check
 [Docker install guide](docs/docker_install.md#fix-d-user-and-group-for-files)
+
+### UPDATE
+added shell script to run it automatically on every start of container
+You just need to move it:
+```shell
+cp ./docker/initScript/permissionResetForLinux.sh.bck ./docker/initScript/permissionResetForLinux.sh
+```
 
