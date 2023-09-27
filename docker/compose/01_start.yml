@@ -11,6 +11,7 @@ services:
       - "80:80"
     volumes:
       - ./docker/certs:/etc/nginx/certs
+      - ./docker/nginx/xopt.conf:/etc/nginx/conf.d/xopt.conf
       - /var/run/docker.sock:/tmp/docker.sock:ro
 
   mysql:

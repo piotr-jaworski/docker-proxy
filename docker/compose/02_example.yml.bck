@@ -28,5 +28,7 @@
       - "80"
     volumes:
       - ./docker/mysql:/docker-mysql/:delegated
+      - ./docker/ioncube:/var/www/ioncube/:delegated
+      - ./docker/php/7.2/php-ini-overrides.ini:/usr/local/etc/php/conf.d/99-overrides.ini:ro
       - ./../example/:/var/www/html/:delegated # Important! Remember to change `./../example/` to existing directory with Your project
     # Important! remember to keep at least one new empty line at the end
